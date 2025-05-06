@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GroApp Weekly Ad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .zoomable {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-origin: center;
+    }
+    .zoomable:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .btn-green {
+      background: linear-gradient(to right, #10b981, #34d399);
+    }
+    .btn-green:hover {
+      background: linear-gradient(to right, #059669, #10b981);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #34d399;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #059669;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f3f4f6;
+    }
+    .zoom-container {
+      position: relative;
+      overflow: hidden;
+      cursor: grab;
+      touch-action: none;
+    }
+    .zoom-container:active {
+      cursor: grabbing;
+    }
+    .zoom-controls {
+      background: white;
+      border-radius: 9999px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0.5rem;
+      display: inline-flex;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-green-50 font-sans antialiased">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <h1 class="text-2xl font-extrabold text-green-600">GroApp</h1>
+      </div>
+      <div class="overflow-x-auto whitespace-nowrap hidden md:block">
+        <div class="inline-flex space-x-3">
+          <button class="px-4 py-2 rounded-full text-green-700 font-medium hover:bg-green-100">Promotor 1</button>
+          <button class="px-4 py-2 rounded-full text-green-700 font-medium hover:bg-green-100">Promotor 2</button>
+          <button class="px-4 py-2 rounded-full text-green-700 font-medium hover:bg-green-100">Promotor 3</button>
+          <button class="px-4 py-2 rounded-full text-green-700 font-medium hover:bg-green-100">Promotor 4</button>
+          <button class="px-4 py-2 rounded-full text-green-700 font-medium hover:bg-green-100">Promotor 5</button>
+          <button class="px-4 py-2 rounded-full text-green-700 font-medium hover:bg-green-100">Promotor 6</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Location Strip -->
+  <div class="bg-green-100 border-b border-green-200 py-3">
+    <div class="max-w-7xl mx-auto px-4 flex items-center text-sm text-green-800 space-x-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 0c2.21 0 4 1.79 4 4v1h-8v-1c0-2.21 1.79-4 4-4z" />
+      </svg>
+      <span>Shopping at <strong>GroApp - Cincinnati</strong></span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="py-10">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center items-center gap-3 mb-6 bg-white rounded-xl shadow-md p-4">
+        <button class="flex items-center text-green-700 hover:text-green-500 font-medium">
+          <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H5a2 2 0 00-2 2v4h18z" />
+          </svg>
+          Weekly Ad Print
+        </button>
+        <span class="text-gray-500 font-medium">April 30 - May 6</span>
+        <button class="btn-green text-white px-5 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">
+          View Other Ads
+        </button>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-6 text-green-800">Weekly Ad</h1>
+
+      <!-- Zoom Controls -->
+      <div class="flex flex-wrap justify-center gap-3 mb-6">
+        <div class="zoom-controls">
+          <button onclick="zoomIn(event)" class="btn-green text-white px-5 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">Zoom In</button>
+          <button onclick="zoomOut(event)" class="btn-green text-white px-5 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">Zoom Out</button>
+          <button onclick="resetZoom()" class="bg-gray-500 text-white px-5 py-2 rounded-full shadow-md hover:bg-gray-600 transition-transform transform hover:scale-105">Reset</button>
+        </div>
+      </div>
+
+      <!-- Weekly Ad Image -->
+      <div class="zoom-container border-2 border-green-200 rounded-xl shadow-xl bg-white p-4">
+        <img id="weeklyAdImage" src="https://kroger-images-prod.przone.net/anonymous/df63122b-bb7f-4fab-88d1-7c71c256f969.jpg?impolicy=full&imwidth=430" alt="Weekly Ad" class="zoomable w-full h-full object-cover rounded-lg transform scale-100" />
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const image = document.getElementById('weeklyAdImage');
+    const container = document.querySelector('.zoom-container');
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let velocityX = 0;
+    let velocityY = 0;
+    let lastTouchX = 0;
+    let lastTouchY = 0;
+    let lastTouchTime = 0;
+    const friction = 0.92;
+    const maxScale = 3;
+    const minScale = 0.2;
+
+    function updateTransform() {
+      // Apply boundary constraints
+      const rect = image.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      const maxTranslateX = (rect.width * scale - containerRect.width) / (2 * scale);
+      const maxTranslateY = (rect.height * scale - containerRect.height) / (2 * scale);
+
+      translateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, translateX));
+      translateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, translateY));
+
+      image.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    }
+
+    function zoomIn(event) {
+      scale = Math.min(scale + 0.1, maxScale);
+      updateTransform();
+    }
+
+    function zoomOut(event) {
+      scale = Math.max(scale - 0.1, minScale);
+      updateTransform();
+    }
+
+    function resetZoom() {
+      image.style.transition = "transform 0.3s ease";
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      velocityX = 0;
+      velocityY = 0;
+      updateTransform();
+      setTimeout(() => {
+        image.style.transition = "";
+      }, 300);
+    }
+
+    // Momentum animation
+    function animateMomentum() {
+      if (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1) {
+        translateX += velocityX;
+        translateY += velocityY;
+        velocityX *= friction;
+        velocityY *= friction;
+        updateTransform();
+        requestAnimationFrame(animateMomentum);
+      }
+    }
+
+    // Mouse drag events
+    container.addEventListener('mousedown', (e) => {
+      if (scale > 1) {
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        velocityX = 0;
+        velocityY = 0;
+        container.style.cursor = 'grabbing';
+      }
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+      }
+    });
+
+    container.addEventListener('mouseup', () => {
+      isDragging = false;
+      container.style.cursor = 'grab';
+      animateMomentum();
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isDragging = false;
+      container.style.cursor = 'grab';
+      animateMomentum();
+    });
+
+    // Touch events for drag and pinch
+    container.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      if (scale > 1 && e.touches.length === 1) {
+        isDragging = true;
+        const touch = e.touches[0];
+        startX = touch.clientX - translateX;
+        startY = touch.clientY - translateY;
+        lastTouchX = touch.clientX;
+        lastTouchY = touch.clientY;
+        lastTouchTime = Date.now();
+        velocityX = 0;
+        velocityY = 0;
+      } else if (e.touches.length === 2) {
+        // Handle pinch zoom
+        isDragging = false;
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+        const dx = touch2.clientX - touch1.clientX;
+        const dy = touch2.clientY - touch1.clientY;
+        container.dataset.pinchDistance = Math.hypot(dx, dy);
+        container.dataset.pinchMidX = (touch1.clientX + touch2.clientX) / 2;
+        container.dataset.pinchMidY = (touch1.clientY + touch2.clientY) / 2;
+      }
+    }, { passive: false });
+
+    container.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      if (isDragging && e.touches.length === 1) {
+        const touch = e.touches[0];
+        const currentTime = Date.now();
+        const deltaTime = (currentTime - lastTouchTime) / 1000;
+
+        translateX = touch.clientX - startX;
+        translateY = touch.clientY - startY;
+
+        // Calculate velocity for momentum
+        if (deltaTime > 0) {
+          velocityX = (touch.clientX - lastTouchX) / deltaTime;
+          velocityY = (touch.clientY - lastTouchY) / deltaTime;
+        }
+
+        lastTouchX = touch.clientX;
+        lastTouchY = touch.clientY;
+        lastTouchTime = currentTime;
+
+        updateTransform();
+      } else if (e.touches.length === 2) {
+        // Handle pinch zoom
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+        const dx = touch2.clientX - touch1.clientX;
+        const dy = touch2.clientY - touch1.clientY;
+        const newPinchDistance = Math.hypot(dx, dy);
+        const oldPinchDistance = parseFloat(container.dataset.pinchDistance);
+        const scaleChange = newPinchDistance / oldPinchDistance;
+
+        const midX = (touch1.clientX + touch2.clientX) / 2;
+        const midY = (touch1.clientY + touch2.clientY) / 2;
+        const rect = image.getBoundingClientRect();
+        const relativeX = (midX - rect.left) / scale;
+        const relativeY = (midY - rect.top) / scale;
+
+        scale = Math.max(minScale, Math.min(maxScale, scale * scaleChange));
+        translateX -= relativeX * (scaleChange - 1);
+        translateY -= relativeY * (scaleChange - 1);
+
+        container.dataset.pinchDistance = newPinchDistance;
+        updateTransform();
+      }
+    }, { passive: false });
+
+    container.addEventListener('touchend', (e) => {
+      if (e.touches.length === 0) {
+        isDragging = false;
+        animateMomentum();
+      } else if (e.touches.length === 1 && scale > 1) {
+        // Resume dragging if one finger remains
+        isDragging = true;
+        const touch = e.touches[0];
+        startX = touch.clientX - translateX;
+        startY = touch.clientY - translateY;
+        lastTouchX = touch.clientX;
+        lastTouchY = touch.clientY;
+        lastTouchTime = Date.now();
+      }
+    });
+
+    // Mouse wheel zoom
+    container.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const zoomFactor = 0.1;
+      const rect = image.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      const centerX = mouseX / scale;
+      const centerY = mouseY / scale;
+
+      if (e.deltaY < 0 && scale < maxScale) {
+        scale += zoomFactor;
+        translateX -= (centerX * zoomFactor) / scale;
+        translateY -= (centerY * zoomFactor) / scale;
+      } else if (e.deltaY > 0 && scale > minScale) {
+        scale -= zoomFactor;
+        translateX += (centerX * zoomFactor) / scale;
+        translateY += (centerY * zoomFactor) / scale;
+      }
+
+      updateTransform();
+    }, { passive: false });
+  </script>
+</body>
+</html>
