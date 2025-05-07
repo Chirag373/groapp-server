@@ -1,0 +1,49 @@
+{% extends 'user/base.html' %}
+
+{% block title %}GroApp Weekly Ad{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 text-center">
+    <div class="flex flex-wrap justify-center items-center gap-3 mb-6 bg-white rounded-xl shadow-md p-4">
+        <button class="flex items-center text-green-700 hover:text-green-500 font-medium">
+            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H5a2 2 0 00-2 2v4h18z" />
+            </svg>
+            Weekly Ad Print
+        </button>
+        <span class="text-gray-500 font-medium">April 30 - May 6</span>
+        <button
+            class="btn-green text-white px-5 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">
+            View Other Ads
+        </button>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold mb-6 text-green-800">Weekly Ad</h1>
+
+    <!-- Zoom Controls -->
+    <div class="flex flex-wrap justify-center gap-3 mb-6">
+        <div class="zoom-controls">
+            <button onclick="zoomIn(event)"
+                class="btn-green text-white px-5 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">Zoom
+                In</button>
+            <button onclick="zoomOut(event)"
+                class="btn-green text-white px-5 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">Zoom
+                Out</button>
+            <button onclick="resetZoom()"
+                class="bg-gray-500 text-white px-5 py-2 rounded-full shadow-md hover:bg-gray-600 transition-transform transform hover:scale-105">Reset</button>
+        </div>
+    </div>
+
+    <!-- Weekly Ad Image -->
+    <div class="zoom-container border-2 border-green-200 rounded-xl shadow-xl bg-white p-4">
+        <img id="weeklyAdImage"
+            src="https://kroger-images-prod.przone.net/anonymous/df63122b-bb7f-4fab-88d1-7c71c256f969.jpg?impolicy=full&imwidth=430"
+            alt="Weekly Ad" class="zoomable w-full h-full object-cover rounded-lg transform scale-100" />
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="static/user/js/zoom.js"></script>
+{% endblock %}

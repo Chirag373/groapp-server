@@ -1,0 +1,48 @@
+{% extends "admins/base.html" %}
+
+{% block title %}Dashboard - GroApp Admin{% endblock %}
+
+{% block content %}
+<!-- Home View - Promoter Selection -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+    <div class="bg-white border rounded-xl p-6 promoter-card">
+        <div class="flex items-center gap-3">
+            <svg class="h-6 w-6 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-gray-800">Promoter 1</h3>
+        </div>
+        <p class="text-sm text-gray-500 mt-3">Stores: 339</p>
+    </div>
+
+    <div class="bg-white border rounded-xl p-6 promoter-card">
+        <div class="flex items-center gap-3">
+            <svg class="h-6 w-6 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-gray-800">Promoter 2</h3>
+        </div>
+        <p class="text-sm text-gray-500 mt-3">Stores: 2750</p>
+    </div>
+
+    <div class="bg-white border rounded-xl p-6 promoter-card">
+        <div class="flex items-center gap-3">
+            <svg class="h-6 w-6 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-gray-800">Promoter 3</h3>
+        </div>
+        <p class="text-sm text-gray-500 mt-3">Stores: 4615</p>
+    </div>
+
+    <div class="bg-white border rounded-xl p-6 promoter-card">
+        <div class="flex items-center gap-3">
+            <svg class="h-6 w-6 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-gray-800">Promoter 4</h3>
+        </div>
+        <p class="text-sm text-gray-500 mt-3">Stores: 120</p>
+    </div>
+</div>
+{% endblock %}

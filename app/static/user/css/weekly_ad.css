@@ -1,0 +1,58 @@
+/* Weekly Ad Page Styles */
+
+/* Button Styles */
+.btn-green {
+    background-color: #16a34a;
+    transition: all 0.3s ease;
+}
+
+.btn-green:hover {
+    background-color: #15803d;
+}
+
+/* Zoom Container */
+.zoom-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 500px;
+    cursor: grab;
+}
+
+.zoom-container:active {
+    cursor: grabbing;
+}
+
+/* Zoomable Image */
+.zoomable {
+    transition: transform 0.2s ease;
+    transform-origin: center center;
+    max-width: 100%;
+}
+
+/* Zoom Controls */
+.zoom-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    .zoom-container {
+        min-height: 300px;
+    }
+    
+    .zoom-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .zoom-controls button {
+        width: 100%;
+        max-width: 200px;
+    }
+}
